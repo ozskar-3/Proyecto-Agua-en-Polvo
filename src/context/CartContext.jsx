@@ -21,14 +21,29 @@ export const CartProvider = ({ children }) => {
             }
             return [...prev, { ...producto, cantidad: 1 }];
         });
-        alert(`"${producto.nombre}" fue añadido al carrito.`);
+
+        // Verificación de seguridad para alert en entorno de pruebas
+        if (typeof window !== 'undefined' && window.alert) {
+            alert(`"${producto.nombre}" fue añadido al carrito.`);
+        }
     };
 
-    const eliminarDelCarrito = (index) => {
+    const eliminarDelCarrito = (identificador) => {
         setCarrito(prev => {
+            // Permite eliminar usando tanto el índice (número) como el nombre/ID (string)
+            const index = typeof identificador === 'number'
+                ? identificador
+                : prev.findIndex(item => item.nombre === identificador || item.id === identificador);
+
+            // Si el elemento no existe en el carrito, no hace nada
+            if (index === -1 || !prev[index]) return prev;
+
             const nuevoCarrito = [...prev];
             if (nuevoCarrito[index].cantidad > 1) {
-                nuevoCarrito[index].cantidad -= 1;
+                nuevoCarrito[index] = {
+                    ...nuevoCarrito[index],
+                    cantidad: nuevoCarrito[index].cantidad - 1
+                };
             } else {
                 nuevoCarrito.splice(index, 1);
             }
@@ -47,7 +62,16 @@ export const CartProvider = ({ children }) => {
     };
 
     return (
-        <CartContext.Provider value={{ carrito, agregarAlCarrito, eliminarDelCarrito, subtotal, totalPagar, setDescuento, limpiarCarrito }}>
+        <CartContext.Provider value={{ 
+            carrito, 
+            agregarAlCarrito, 
+            eliminarDelCarrito, 
+            subtotal, 
+            totalPagar, 
+            descuento,
+            setDescuento, 
+            limpiarCarrito 
+        }}>
             {children}
         </CartContext.Provider>
     );

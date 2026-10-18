@@ -28,6 +28,7 @@ export default function Cart() {
                                 <div className="row g-0 align-items-center">
                                     <div className="col-md-8">
                                         <div className="card-body">
+                                            <img src={prod.img} className="card-img-top p-3" alt={prod.nombre} style={{ maxHeight: '220px', objectFit: 'contain' }} />
                                             <h5 className="card-title">{prod.nombre}</h5>
                                             <p className="mb-1">Precio: ${prod.precio} x {prod.cantidad}</p>
                                         </div>

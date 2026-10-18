@@ -31,19 +31,20 @@ function App() {
               </button>
               
               <div className="collapse navbar-collapse" id="navbarNav">
-                <ul className="navbar-nav me-auto">
-                  <li className="nav-item">
-                    <a className="nav-link" href="#coca-cola">Selección Coca-Cola</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#agua-polvo">Agua en Polvo</a>
-                  </li>
-                  <li className="nav-item">
-                    <a className="nav-link" href="#contacto">Contacto</a>
-                  </li>
-                </ul>
                 
-                <div className="d-flex gap-2 align-items-center mt-3 mt-lg-0">
+                <ul className="navbar-nav me-carrito">
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/#coca-cola">Coca-cola</Link>
+                  </li>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/#agua-polvo">Agua en Polvo</Link>
+                  </li>
+                  <li className="nav-item">
+                      <Link className="nav-link" to="/#contacto">Contacto</Link>
+                  </li>
+              </ul>
+                
+                <div className="d-flex gap-2 align-items-center mt-3 mt-lg-0 ms-auto col-12 col-sm-6 col-lg-4">
                   <Link to="/cart" className="btn btn-outline-light btn-sm">🛒 Mi Carrito</Link>
                   <Link to="/login" className="btn btn-light btn-sm fw-bold">Iniciar Sesión / Registro</Link>
                 </div>

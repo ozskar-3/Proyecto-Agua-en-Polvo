@@ -1,4 +1,5 @@
-import { useContext, useState } from 'react';
+import { useContext, useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 
 const productos = [
@@ -16,7 +17,18 @@ const productoAguaPolvo = {
 
 export default function Home() {
     const { agregarAlCarrito } = useContext(CartContext);
-
+    const location = useLocation();
+    useEffect(() => {
+        if (location.hash) {
+            const id = location.hash.replace('#', '');
+            const elemento = document.getElementById(id);
+            if (elemento) {
+                setTimeout(() => {
+                    elemento.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+            }
+        }
+    }, [location]);
     // Estado para el formulario de contacto
     const [contacto, setContacto] = useState({ nombre: '', email: '', mensaje: '' });
 
