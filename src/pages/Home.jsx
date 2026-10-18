@@ -278,6 +278,17 @@ export default function Home() {
                     </div>
                 </div>
             </section>
+
+            <div className='text-center my-4'>
+            <a
+                href="/coverage/index.html" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="btn btn-outline-info fw-semibold"
+            >
+                Ver Reporte de Cobertura de Pruebas
+            </a>
+            </div>
         </div>
     );
 }
