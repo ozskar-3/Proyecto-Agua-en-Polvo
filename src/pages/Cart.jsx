@@ -30,11 +30,11 @@ export default function Cart() {
                                         <div className="card-body">
                                             <img src={prod.img} className="card-img-top p-3" alt={prod.nombre} style={{ maxHeight: '220px', objectFit: 'contain' }} />
                                             <h5 className="card-title">{prod.nombre}</h5>
-                                            <p className="mb-1">Precio: ${prod.precio} x {prod.cantidad}</p>
+                                            <p className="mb-1">Precio: ${prod.precio.toLocaleString('es-CL')} x {prod.cantidad}</p>
                                         </div>
                                     </div>
                                     <div className="col-md-4 text-end p-3">
-                                        <p className="fw-bold mb-2">${prod.precio * prod.cantidad}</p>
+                                        <p className="fw-bold mb-2">${(prod.precio * prod.cantidad).toLocaleString('es-CL')}</p>
                                         <button className="btn btn-outline-danger btn-sm" onClick={() => eliminarDelCarrito(index)}>Eliminar</button>
                                     </div>
                                 </div>
@@ -48,11 +48,13 @@ export default function Cart() {
                         <div className="card-body">
                             <h2 className="card-title h4 mb-4">Resumen</h2>
                             <div className="d-flex justify-content-between mb-2">
-                                <span>Subtotal</span><span>${subtotal}</span>
+                                <span>Subtotal</span>
+                                <span>${subtotal.toLocaleString('es-CL')}</span>
                             </div>
                             <hr />
                             <div className="d-flex justify-content-between mb-4">
-                                <strong>Total a Pagar</strong><strong>${totalPagar}</strong>
+                                <span>Total a Pagar</span>
+                                <span>${totalPagar.toLocaleString('es-CL')}</span>
                             </div>
                             <form onSubmit={aplicarCupon} className="mb-4">
                                 <div className="input-group">

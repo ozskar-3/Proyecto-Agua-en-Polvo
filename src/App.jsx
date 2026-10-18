@@ -34,7 +34,7 @@ function App() {
                 
                 <ul className="navbar-nav me-carrito">
                   <li className="nav-item">
-                      <Link className="nav-link" to="/#coca-cola">Coca-cola</Link>
+                      <Link className="nav-link" to="/#coca-cola">Bebidas</Link>
                   </li>
                   <li className="nav-item">
                       <Link className="nav-link" to="/#agua-polvo">Agua en Polvo</Link>
